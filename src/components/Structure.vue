@@ -1,18 +1,22 @@
 <template>
   <div class="structure">
-    <h1 class="title">teste</h1>
+    <h1 class="title">Dashboard</h1>
     <div class="container">
       <div class="row">
-        <div class="col-md-3 col-sm p-4" v-for="item in dados" :key="item.id">
-          <div class="card card-body">
-            <h5 class="card-title">{{item.titulo}}</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            <a href="#" class="btn btn-primary">Go somewhere</a>
+        <div class="card p-4 text-white bg-primary mb-3" style="max-width: 18rem;" 
+        v-for="(item, index) in dados" :key="item.id">
+          <input class="input-header">
+          <div class="card-body">
+            <input class="input-card">
+            <button type="button" class="btn btn-outline-light mb-3" v-on:click="removeCard(index)">Excluir</button>
+          </div>
+          </div>
+          </div>
+          <div class="buton more">
+            <button type="button" class="btn btn-outline-primary" v-on:click="addCard">More</button>
           </div>
         </div>
       </div>
-    </div>
-  </div>
 </template>
 
 <script>
@@ -20,7 +24,27 @@ export default {
   name: 'StructurePage',
   props: {
     msg: String,
-    dados: Array
+  },
+
+  data() {
+    return {dados: [
+      {
+        titulo: '', 
+        texto: ''}, 
+      ]}
+  },
+
+  methods: {
+    removeCard(index) {
+      this.dados.splice(index, 1);
+    },
+
+    addCard() {
+      this.dados.push({
+        titulo: '',
+        texto: '',
+      });
+    }
   }
 }
 </script>
@@ -28,22 +52,17 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .title {
-  color: white;
+  color: black;
 }
-h1 {
-  margin: 40px 0 0;
-  color: red !important;
+.input-header {
+  background: #0077f7;
+  border: none;
 }
-ul {
-  list-style-type: none;
-  padding: 0;
+.input-card{
+  background: #0077f7;
+  border: none;
 }
-li {
-  display: inline-block;
-  margin: 0 10px;
-  color: blueviolet;
-}
-a {
-  color: white;
+.bg-primary{
+  margin: 10px;
 }
 </style>
