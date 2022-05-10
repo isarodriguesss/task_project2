@@ -55,4 +55,11 @@ li {
 a {
   color: #42b983;
 }
+.hello {
+  background-color: black;
+  color: white;
+  padding: 0;
+  width: 40%;
+  margin: 0 auto;
+}
 </style>
