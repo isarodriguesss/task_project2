@@ -3,23 +3,24 @@
     <h1 class="title">Dashboard</h1>
     <div class="container">
       <div class="row">
-        <div class="card p-4 text-white bg-primary mb-3" style="max-width: 18rem;" 
+        <div class="card bg-primary" style="max-width: 18rem;" 
         v-for="(item, index) in dados" :key="item.id">
-          <input class="input-header">
-          <div class="card-body">
-            <input class="input-card">
-            <button type="button" class="btn btn-outline-light mb-3" v-on:click="removeCard(index)">Excluir</button>
-          </div>
-          </div>
-          </div>
-          <div class="buton more">
-            <button type="button" class="btn btn-outline-primary" v-on:click="addCard">More</button>
-          </div>
+          <textarea class="text-card"></textarea>
+          <p>{{index}}</p>
+          <button type="button" class="btn btn-outline-light mb-3" v-on:click="removeCard(index)">Excluir</button>
+        </div>
+        <div class="buton more top-0" style="top:0">
+          <button type="button" class="btn btn-outline-primary" v-on:click="addCard">
+          <icons-mdi name="close"></icons-mdi>
+          More</button>
         </div>
       </div>
+    </div>
+  </div>
 </template>
 
 <script>
+
 export default {
   name: 'StructurePage',
   props: {
@@ -29,7 +30,6 @@ export default {
   data() {
     return {dados: [
       {
-        titulo: '', 
         texto: ''}, 
       ]}
   },
@@ -40,8 +40,9 @@ export default {
     },
 
     addCard() {
+      let contador = this.dados.length+1
       this.dados.push({
-        titulo: '',
+        id: contador,
         texto: '',
       });
     }
@@ -49,20 +50,23 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .title {
   color: black;
 }
-.input-header {
-  background: #0077f7;
+.text-card{
+  background: none repeat scroll 0 0;
   border: none;
-}
-.input-card{
-  background: #0077f7;
-  border: none;
+  height: 70%;
+  margin: 10px;
+  resize: none;
+  outline: none;
+
 }
 .bg-primary{
   margin: 10px;
+  height: 250px;
+  border: none;
+  opacity: 80%;
 }
 </style>
